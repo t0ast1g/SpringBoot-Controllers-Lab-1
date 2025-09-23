@@ -2,18 +2,20 @@ package com.herlocgg.lab1;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//@Primary not required when defined via @Bean in AppConfig
+//@Service("stripe")
+//@Primary
 public class StripePaymentService implements PaymentService {
-    @Value("${stripe.apiUrl}")
+    @Value("$(stripe.apiUrl)")
     private String stripeApiUrl;
-    @Value("${stripe.enabled:true}")
+    @Value("$(stripe.enabled:true)")
     private boolean enabled;
-    @Value("${stripe.timeout:3000}")
+    @Value("$(stripe.timeout:3000)")
     private int timeout;
-    @Value("${stripe.supported-currencies}")
+    @Value("$(stripe.supported-currencies)")
     private List<String> supportedCurrencies;
 
     @Override

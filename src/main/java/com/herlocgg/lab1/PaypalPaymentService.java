@@ -1,7 +1,8 @@
 package com.herlocgg.lab1;
 
-// No @Service because beans are provided via AppConfig
+import org.springframework.stereotype.Service;
 
+//@Service
 public class PaypalPaymentService implements PaymentService {
     @Override
     public void ProcessPayment(double amount){
