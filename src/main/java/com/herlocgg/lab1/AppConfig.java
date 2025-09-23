@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-    @Value("${payment-gateway}")
+    @Value("${stripe.payment-gateway:stripe}")
     private String paymentGateway;
 
     @Bean
@@ -23,7 +23,7 @@ public class AppConfig {
             return new OrderService(paypal());
         }
         if(paymentGateway.equals("stripe")) {
-            return new OrderService(paypal());
+            return new OrderService(stripe());
         }
         throw new RuntimeException("Unknown payment gateway:" + paymentGateway);
     }
